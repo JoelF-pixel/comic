@@ -15,12 +15,12 @@ export default function Home() {
       
       <main className="flex flex-col gap-0 max-w-[800px] w-full bg-white shadow-2xl">
         {panels.map((panel, index) => (
-          <div key={index} className="relative w-full aspect-[1614/4500]">
+          <div key={index} className="relative w-full aspect-[1614/4500] block">
             <Image
               src={panel.src}
               alt={panel.alt}
               fill
-              className="object-contain"
+              className="object-contain w-full h-auto"
               sizes="(max-width: 800px) 100vw, 800px"
               priority={index === 0}
             />
