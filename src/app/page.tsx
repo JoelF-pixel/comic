@@ -1,6 +1,11 @@
+'use client';
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [showEasterEgg, setShowEasterEgg] = useState(false);
+
   const panels = [
     { src: "/panel1.png", alt: "Comic Panel 1" },
     { src: "/panel2.png", alt: "Comic Panel 2" },
@@ -8,28 +13,47 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-950 flex flex-col items-center">
+    <div className={`bg-zinc-950 flex flex-col items-center ${showEasterEgg ? "h-screen overflow-hidden" : "min-h-screen"}`}>
       <header className="sr-only">
         <h1 className="text-3xl font-bold tracking-tight text-center">Vertical Comic</h1>
       </header>
       
-      <main className="flex flex-col gap-0 max-w-[800px] w-full bg-white shadow-2xl">
-        {panels.map((panel, index) => (
-          <div key={index} className="relative w-full aspect-[1614/4500] block">
+      <main className={`flex flex-col gap-0 max-w-[800px] w-full bg-white shadow-2xl ${showEasterEgg ? "flex-1 min-h-0" : ""}`}>
+        {showEasterEgg ? (
+          <div className="relative w-full h-full block">
             <Image
-              src={panel.src}
-              alt={panel.alt}
+              src="/comic.gif"
+              alt="Easter Egg Comic"
               fill
-              className="object-contain w-full h-auto"
+              unoptimized
+              className="object-contain"
               sizes="(max-width: 800px) 100vw, 800px"
-              priority={index === 0}
+              priority
             />
           </div>
-        ))}
+        ) : (
+          panels.map((panel, index) => (
+            <div key={index} className="relative w-full aspect-[1614/4500] block">
+              <Image
+                src={panel.src}
+                alt={panel.alt}
+                fill
+                className="object-contain w-full h-auto"
+                sizes="(max-width: 800px) 100vw, 800px"
+                priority={index === 0}
+              />
+            </div>
+          ))
+        )}
       </main>
 
-      <footer className="py-12 text-zinc-500 text-sm">
+      <footer className={`${showEasterEgg ? "py-4" : "py-12"} text-zinc-500 text-sm flex flex-col items-center gap-4`}>
         <p>© 2026 Joel Fielding</p>
+        <button
+          onClick={() => setShowEasterEgg(!showEasterEgg)}
+          className="w-4 h-4 rounded-full bg-green-500 cursor-pointer hover:bg-green-400 transition-colors animate-glow"
+          title="Easter Egg"
+        />
       </footer>
     </div>
   );
