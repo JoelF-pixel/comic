@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export default function Home() {
   const panels = [
-    { src: "panel1.png", alt: "Comic Panel 1" },
-    { src: "panel2.png", alt: "Comic Panel 2" },
-    { src: "panel3.png", alt: "Comic Panel 3" },
+    { src: "/panel1.png", alt: "Comic Panel 1" },
+    { src: "/panel2.png", alt: "Comic Panel 2" },
+    { src: "/panel3.png", alt: "Comic Panel 3" },
   ];
 
   return (
