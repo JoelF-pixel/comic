@@ -13,22 +13,23 @@ export default function Home() {
         <h1 className="text-3xl font-bold tracking-tight text-center">Vertical Comic</h1>
       </header>
       
-      <main className="flex flex-col gap-4 p-4 max-w-2xl w-full">
+      <main className="flex flex-col gap-0 max-w-[800px] w-full bg-white shadow-2xl">
         {panels.map((panel, index) => (
-          <div key={index} className="relative w-full aspect-[3/4] overflow-hidden rounded-lg shadow-2xl">
+          <div key={index} className="relative w-full aspect-[1614/4500]">
             <Image
               src={panel.src}
               alt={panel.alt}
               fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 672px"
+              className="object-contain"
+              sizes="(max-width: 800px) 100vw, 800px"
+              priority={index === 0}
             />
           </div>
         ))}
       </main>
 
       <footer className="py-12 text-zinc-500 text-sm">
-        <p>© 2026 Comic Strip</p>
+        <p>© 2026 Joel Fielding</p>
       </footer>
     </div>
   );
