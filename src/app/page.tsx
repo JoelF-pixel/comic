@@ -51,9 +51,12 @@ export default function Home() {
         <p>© 2026 Joel Fielding</p>
         <button
           onClick={() => setShowEasterEgg(!showEasterEgg)}
-          className="w-4 h-4 rounded-full bg-green-500 cursor-pointer hover:bg-green-400 transition-colors animate-glow"
+          className="flex items-center gap-2 cursor-pointer group"
           title="Easter Egg"
-        />
+        >
+          <div className="w-4 h-4 rounded-full bg-green-500 group-hover:bg-green-400 transition-colors animate-glow" />
+          <span className="text-xs transition-colors group-hover:text-zinc-400">click for bonus</span>
+        </button>
       </footer>
     </div>
   );
